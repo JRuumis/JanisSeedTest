@@ -35,7 +35,7 @@ class AgeCalculationController @Inject()(cc: ControllerComponents) extends Abstr
       val result = BirthDateObjects.calculateResults(adjustedBirthDate)
 
 
-      //"77777" xxxxx
+      //"77777" xxxxx yyy
 
       //val = yearsOld = BirthDateObjects.ageInYears(birthData).toString
 
