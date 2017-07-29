@@ -1,0 +1,64 @@
+@(result: models.AgeCalculationResults)
+
+@base("Your Age Calculator - ResultsXX") {
+
+  <div class="inputs">
+    <h2>Your age in numbers</h2>
+
+    Your age in different time units:
+    <ul>
+      <li>@result.yearsOld years old</li>
+      <li>@result.monthsOld months old</li>
+      <li>@result.daysOld days old</li>
+      <li>@result.hoursOld hours old</li>
+      <li>@result.minutesOld minutes old</li>
+      <li>@result.secondsOld approximately seconds old</li>
+      <li>@result.millisecondsOld approximately milliseconds old</li>
+      <li>@result.planckTimesOld approximately <a href="https://en.wikipedia.org/wiki/Planck_time">Planck times</a> old
+      </li>
+    </ul>
+
+    <ul>
+      <li>You have been around for approximately @result.percentageOfEarthAge% of the total <a
+              href="https://en.wikipedia.org/wiki/Age_of_the_Earth">age of the Earth</a>.
+      </li>
+      <li>You have been around for approximately @result.percentageOfUniverseAge% of the total <a
+              href="https://en.wikipedia.org/wiki/Age_of_the_universe">age of the Universe</a>.
+      </li>
+    </ul>
+
+
+    If you had become a passenger on the Voyager 1 probe upon your birth (possible with current technology):
+    <ul>
+      <li>Voyager journey in km: @result.voyagerKm</li>
+      <li>Voyager journey in Light Years: @result.voyagerLightYear</li>
+      <li>Voyager journey in light minutes: @result.voyagerLightMinute</li>
+      <li>Voyager journey as % to the nearaest star Proxima Centauri: @result.voyagerToNearestStar%</li>
+      <li>Voyager journey through Solar System: @result.voyagerSolarSystem</li>
+    </ul>
+
+
+    If you were to travel near speed of light:
+    <ul>
+
+      <!-- http://www.alternatewars.com/BBOW/Space/Time_Dilation.htm -->
+      <li>Going at 90% the speed of light, time on Earth: <!-- 2.294157338706 slower --> @result.speed90cEarthYears years
+        passed on Earth
+      </li>
+      <li>Going at 99% the speed of light, time on Earth: <!-- 7.088812050083 slower --> @result.speed99cEarthYears years
+        passed on Earth
+      </li>
+
+      <!-- http://journal.batard.info/post/2008/09/12/lhc-how-fast-do-these-protons-go -->
+      <li>Accelerated by the Large Hadron Collider (99.9999991% the speed of light), time on Earth:
+        <!-- 7460.523 slower --> @result.speedLHCEarthYears years passeed on Earth
+      </li>
+    </ul>
+
+    Traveling at these speeds, if your local age is @result.yearsOld, you could travel ... light years.
+
+
+    <BR>TODO: explain calculations
+
+  </div>
+}

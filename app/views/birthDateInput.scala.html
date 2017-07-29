@@ -1,0 +1,75 @@
+@import helper._
+@import models.CustomConstructors._
+
+@(myForm: Form[models.BirthData])(implicit request: RequestHeader, messagesProvider: MessagesProvider)
+
+@base("Your Age Calculator") {
+
+  @helper.form(action = controllers.routes.AgeResultDisplayController.calculationResult) {
+
+    <div class="inputs date">
+
+      <div>Enter your birth date:</div>
+
+      <!-- TODO: list of leap years, control to select date -->
+
+      @helper.select(
+        field = myForm("birthYear"),
+        options = (1900 to 2017).toSeq map (_.toString)  map (i => i->i),
+        '_label -> "Year",
+        '_default -> ("-- Choose year --"),
+        '_showConstraints -> false,
+        'class -> "inputter"
+      )
+
+      @helper.select(
+        field = myForm("birthMonth"),
+        options = (1 to 12).map(_.toString) zip
+        Seq("January","February","March","April","May","June","July","August","September","October","November","December"),
+        '_label -> "Month",
+        '_default -> "-- Choose month --",
+        '_showConstraints -> false,
+        'class -> "inputter"
+      )
+
+      @helper.select(
+        field = myForm("birthDate"),
+        options = (1 to 31).toSeq map (_.toString)  map (i => i->i),
+        '_label -> "Date",
+        '_default -> ("-- Choose date --"),
+        '_showConstraints -> false,
+        'class -> "inputter"
+      )
+
+    </div>
+
+
+    <div class="inputs time">
+      <div>Optionally enter your birth time in 24 hour format (e.g. 14:25, <i>NOT</i> 2:25pm):</div>
+
+      @helper.inputText(
+        field = myForm("birthHour"),
+        '_label -> "Hour",
+        '_showConstraints -> false,
+        'class -> "inputter",
+        'size -> "4",
+        'maxlength -> "2"
+        )
+
+      @helper.inputText(
+        field = myForm("birthMinute"),
+        '_label -> "Minute",
+        '_showConstraints -> false,
+        'class -> "inputter",
+        'size -> "4",
+        'maxlength -> "2"
+        )
+
+    </div>
+
+    <div class="inputs submit">
+    <input type="submit" name="Calculate">
+    </div>
+  }
+
+}

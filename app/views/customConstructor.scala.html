@@ -1,0 +1,14 @@
+@import helper._
+
+@(elements: helper.FieldElements)
+
+<div class="@if(elements.hasErrors) {input-area error} else {input-area}">
+
+    <label for="@elements.id">@elements.label</label>
+    <div class="input">
+        @elements.input
+        <div class="hints errors">@elements.errors.mkString(", ")</div>
+        <div class="hints help">@elements.infos.mkString(", ")</div>
+    </div>
+
+</div>

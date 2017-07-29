@@ -4,6 +4,17 @@
 import org.joda.time._
 
 
+(38.toDouble / 4543000000l) * 100
+
+
+"0" * 40
+
+
+BigInt("18550000000000000000000000000000000000000000")
+
+
+val aaa = BigInt("100000000000000000000000000000000000000000000000000000")
+
 
 val now = DateTime.now
 
@@ -33,7 +44,7 @@ val xxx = new org.joda.time.Duration(janisBD, now).getStandardHours
 //Hours.hoursBetween(now)
 
 
-(1900 to 2017) map (i => i->i)
+//(1900 to 2017) map (i => i->i)
 
 
 
