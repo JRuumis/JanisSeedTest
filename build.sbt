@@ -15,3 +15,6 @@ libraryDependencies += "org.scalatestplus.play" %% "scalatestplus-play" % "3.1.0
 
 // Adds additional packages into conf/routes
 // play.sbt.routes.RoutesKeys.routesImport += "com.janis.binders._"
+
+libraryDependencies += "com.typesafe.play" %% "play-mailer" % "6.0.0"
+libraryDependencies += "com.typesafe.play" %% "play-mailer-guice" % "6.0.0"

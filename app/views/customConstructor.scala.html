@@ -2,9 +2,14 @@
 
 @(elements: helper.FieldElements)
 
-<div class="@if(elements.hasErrors) {input-area error} else {input-area}">
+<div class="@if(elements.hasErrors) {input-construct-area error} else {input-construct-area}">
 
-    <label for="@elements.id">@elements.label</label>
+    @* do not display label for radio buttons *@
+    @if(elements.input.toString.trim.take(22).drop(13) == "buttonset") {
+    } else {
+    <label for="@elements.id">@(elements.label)</label>
+    }
+
     <div class="input">
         @elements.input
         <div class="hints errors">@elements.errors.mkString(", ")</div>

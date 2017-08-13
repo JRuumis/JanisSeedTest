@@ -1,0 +1,85 @@
+@import models.ContactContent._
+@import models.CustomConstructors._
+@import models.ErrorHandler._
+
+@(contactForm: Form[ContactFormInput])(implicit request: RequestHeader, messagesProvider: MessagesProvider)
+
+@base("Your Age Calculator - Contact Form") {
+
+<div class="inputs-body">
+
+  <div class="text-paragraph">
+
+
+    @if(contactForm.hasErrors) {
+    <div class="input-group">
+      <div class="input-area error">
+        @if(contactForm.errors.size > 0) {
+        @Html(showFormErrors(contactForm.errors))
+        @*Html(((contactForm.errors map {case FormError(_,message,_) => message.mkString(", ")}).toSet[String] map (models.ErrorHandler.translateErrorMessage(_)) mkString("<p>","</p>\n<p>","</p>"))) *@
+        } else {
+        Unknown error.
+        }
+      </div>
+    </div>
+
+    } else {}
+
+  @helper.form(action = helper.CSRF(controllers.routes.ContactFormController.submitForm)) {
+
+      <div class="input-group">
+        @helper.inputText(
+        field = contactForm("fromSender"),
+        '_label -> "Your name:",
+        '_showConstraints -> false,
+        'class -> "form-input-element contact",
+        'size -> "50",
+        'maxlength -> "100"
+        )
+      </div>
+
+      <div class="input-group">
+        @helper.inputText(
+        field = contactForm("senderEmail"),
+        '_label -> "Optionally provide your email address:",
+        '_showConstraints -> false,
+        'class -> "form-input-element contact",
+        'size -> "50",
+        'maxlength -> "100"
+        )
+      </div>
+
+      <div class="input-group">
+        @helper.inputRadioGroup(
+        field = contactForm("messageSubject"),
+        options = Seq("Correction", "Suggestion", "Complaint", "Job Offer", "Other") map (_.toString)  map (i => i->i),
+        '_showConstraints -> false,
+        'class -> "form-input-element contact",
+        '_label -> "What is your message about:",
+        )
+      </div>
+
+      <div class="input-group">
+        @helper.textarea(
+        field = contactForm("messageContent"),
+        '_label -> "Message:",
+        '_showConstraints -> false,
+        'class -> "form-input-element contact",
+        'rows -> 20,
+        'cols -> 80,
+        'size -> 2000,
+        'maxlength -> 2000
+        )
+      </div>
+
+      <div class="input-group">
+        <input class="button" type="submit" name="send" value="Send"/>
+      </div>
+
+  }
+
+  </div>
+
+</div>
+
+}

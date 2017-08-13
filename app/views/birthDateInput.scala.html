@@ -1,25 +1,45 @@
 @import helper._
 @import models.CustomConstructors._
+@import models.ErrorHandler._
+@import java.util.Calendar
 
-@(myForm: Form[models.BirthData])(implicit request: RequestHeader, messagesProvider: MessagesProvider)
+@(myForm: Form[models.InputBirthDate])(implicit request: RequestHeader, messagesProvider: MessagesProvider)
 
 @base("Your Age Calculator") {
 
+<div class="inputs-body">
+
+  @* --- error display --- *@
+  @if(myForm.hasErrors) {
+    <div class="input-group">
+      <div class="input-construct-area error">
+        @if(myForm.errors.size > 0) {
+        @Html(showFormErrors(myForm.errors))
+        @*Html(((myForm.errors map {case FormError(_,message,_) => message.mkString(", ")}).toSet[String] map (models.ErrorHandler.translateErrorMessage(_)) mkString("<p>","</p>\n<p>","</p>"))) *@
+        } else {
+          Unknown error.
+        }
+      </div>
+    </div>
+
+  } else {}
+
   @helper.form(action = controllers.routes.AgeResultDisplayController.calculationResult) {
 
-    <div class="inputs date">
+    <div class="input-group">
 
+      <div>How old are you? You will find out much more than just your age in years!</div>
       <div>Enter your birth date:</div>
 
       <!-- TODO: list of leap years, control to select date -->
 
       @helper.select(
         field = myForm("birthYear"),
-        options = (1900 to 2017).toSeq map (_.toString)  map (i => i->i),
+        options = (1900 to (Calendar.getInstance()get(Calendar.YEAR))).toSeq map (_.toString)  map (i => i->i),
         '_label -> "Year",
-        '_default -> ("-- Choose year --"),
+        '_default -> (""),
         '_showConstraints -> false,
-        'class -> "inputter"
+        'class -> "form-input-element age"
       )
 
       @helper.select(
@@ -27,31 +47,31 @@
         options = (1 to 12).map(_.toString) zip
         Seq("January","February","March","April","May","June","July","August","September","October","November","December"),
         '_label -> "Month",
-        '_default -> "-- Choose month --",
+        '_default -> "",
         '_showConstraints -> false,
-        'class -> "inputter"
+        'class -> "form-input-element age"
       )
 
       @helper.select(
         field = myForm("birthDate"),
         options = (1 to 31).toSeq map (_.toString)  map (i => i->i),
         '_label -> "Date",
-        '_default -> ("-- Choose date --"),
+        '_default -> (""),
         '_showConstraints -> false,
-        'class -> "inputter"
+        'class -> "form-input-element age"
       )
 
     </div>
 
 
-    <div class="inputs time">
+    <div class="input-group">
       <div>Optionally enter your birth time in 24 hour format (e.g. 14:25, <i>NOT</i> 2:25pm):</div>
 
       @helper.inputText(
         field = myForm("birthHour"),
         '_label -> "Hour",
         '_showConstraints -> false,
-        'class -> "inputter",
+        'class -> "form-input-element age",
         'size -> "4",
         'maxlength -> "2"
         )
@@ -60,16 +80,18 @@
         field = myForm("birthMinute"),
         '_label -> "Minute",
         '_showConstraints -> false,
-        'class -> "inputter",
+        'class -> "form-input-element age",
         'size -> "4",
         'maxlength -> "2"
         )
 
     </div>
 
-    <div class="inputs submit">
-    <input type="submit" name="Calculate">
+    <div class="input-group">
+      <input class="button submit" type="submit" name="calculate" value="Show my Age!">
     </div>
   }
+
+</div>
 
 }

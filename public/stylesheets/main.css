@@ -1,94 +1,155 @@
 
-dd.error {
-    color: #ff0000;
-}
-
 body {
     max-width: 1280px;
-    font-family: arial;
+    font-family: 'Roboto', sans-serif;
     margin: 10px auto;
     background-image: url(/assets/images/ep_naturalwhite.png);
 }
 
-.input-area {
-    background-color: lightblue;
-    padding: 10px 10px;
-    margin: 2px 0px;
-    display: inline-block;
-}
-
-.input-area.error {
-    background-color: rgb(255, 204, 204);
-}
-
-.inputs {
-    padding: 5px 5px;
-    background-color: rgba(210, 210, 210, 0.5);
-    margin-bottom: 5px;
-}
-
-select option.blank {
-    color: #CCC;
-}
-
-.inputs.date {
-}
-
-.inputs.time {
-}
-
-label {
-    font-size:16pt;
-}
-
-#page-header, #page-footer {
-    background-color: rgba(210, 210, 210, 0.5);
-    padding: 5px 5px;
-    margin: 5px 0px;
-}
-
-#page-footer {
-    text-align:center;
-    font-size: 10px;
-}
-
-ul {
-    font-size: 20px;
-}
-
-.inputter {
-    font-size:16pt;
-}
-
-a {
+#header-link {
     text-decoration: none;
-    color: #0645ad;
+    color: #1c1c1c;
     background: none;
 }
 
-a:visited {
-    color: #0645ad;
+.page-header-footer {
+    background-color: rgba(252, 252, 252, 1);
+    padding: 10px 10px;
+    margin: 5px 0px;
 }
 
-a:hover {
-   text-decoration: underline; // changed from text:decoration:none
+.page-header-footer.page-header-only {
+    background-position: center right;
+    background-repeat: no-repeat;
+    background-image: -webkit-linear-gradient(top,rgba(0,0,0,0),rgba(0,0,0,0.25)), url('/assets/images/calendar.jpg');
 }
 
+.page-header-footer.page-footer-only {
+    text-align:center;
+    font-size: 14px;
+}
 
-input[type="submit"], input[type="reset"], input[type="button"], .button {
+h1 {
+    margin: 10px 0;
+    font-size: 60px;
+}
+
+.inputs-body {
+    font-size: 20px;
+    padding: 5px 5px;
+    background-color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 5px;
+
+    /* font-family: 'Slabo 27px', serif; */
+}
+
+/* horizontal group splitter */
+.input-group {
+    padding: 8px 4px;
+}
+
+/* input area created by constructor */
+.input-construct-area {
+    background-color: #8ce88c;
+    padding: 10px 10px;
+    margin: 2px 0px;
+    display: inline-block;
+    border-radius: 5px;
+    font-family: 'Slabo 27px', serif;
+    font-size:16pt;
+}
+
+.input-construct-area.error {
+    background-color: rgb(255, 204, 204);
+}
+
+/* form elements */
+.form-input-element {
+    font-family: 'Slabo 27px', serif;
+}
+
+.form-input-element.age {
+    font-size:40pt;
+}
+
+.form-input-element.contact {
+    font-size:15pt;
+}
+
+.button {
     transition: background-color .2s ease-in-out,color .2s ease-in-out,box-shadow .2s ease-in-out;
-    background-color: #37c0fb;
-    background-image: -webkit-linear-gradient(top,rgba(0,0,0,0),rgba(0,0,0,0.15)),url(bg01.png);
+    background-color: #4682B4;
+    /* background-image: url(bg01.png); */
     border-radius: 5px;
     border: 0;
     color: #fff;
     cursor: pointer;
     display: inline-block;
-    padding: 0 1.5em;
-    line-height: 2.75em;
-    min-width: 9em;
+    padding: 12px 15px;
+    /*line-height: 2.1em; */
+    /* min-width: 9em; */
     text-align: center;
     text-decoration: none;
-    font-weight: 600;
-    letter-spacing: -.025em;
+    /* font-weight: 600; */
+    /* letter-spacing: -.025em; */
+    font-size: 25px;
+}
+
+
+ul.results-list {
+    font-size: 20px;
+    margin: 3px 0;
+}
+
+ul.errors-list {
+    margin: 0 0;
+}
+
+
+.footer-hyperlink {
+    text-decoration: none;
+    color: #000;
+    background: none;
+}
+
+.footer-hyperlink:visited {
+    color: #000;
+}
+
+.footer-hyperlink:hover {
+   text-decoration: underline;
+}
+
+
+.text-paragraph {
+    margin-top: 10px;
+    margin-bottom: 35px;
+}
+
+.text-additional-comment {
+    font-size: 16px;
+    font-style: italic;
+}
+
+.calc-figure {
+    font-weight: bold;
+}
+
+.TODO {
+    color: orange;
+}
+
+/* default hyperlinks in text */
+a:not(.header-link):not(.footer-hyperlink) {
+    text-decoration: none;
+    color: #0645ad;
+    background: none;
+}
+
+a:not(.header-link):not(.footer-hyperlink):visited {
+    color: #0645ad;
+}
+
+a:not(.header-link):not(.footer-hyperlink):hover {
+   text-decoration: underline; // changed from text:decoration:none
 }

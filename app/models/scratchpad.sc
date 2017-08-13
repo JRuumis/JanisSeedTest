@@ -1,7 +1,56 @@
 // agecalc.info
 // ramavasoftware.com
 
+//import java.math.MathContext
+
+
+
+
+/*
+def pow(i: BigDecimal): BigDecimal = i*i
+
+def sqrt(a: BigDecimal, scale: Int): BigDecimal = {
+  var x = new BigDecimal( Math.sqrt(a.doubleValue()), MathContext.DECIMAL64 )
+
+  if (scale < 17) {
+    return x
+  }
+
+  val b2 = new BigDecimal(2)
+  var tempScale = 16
+  while(tempScale < scale){
+    //x = x - (x * x - a) / (2 * x);
+    x = x.subtract(x.multiply(x).subtract(a).divide(x.multiply(b2), scale, BigDecimal.ROUND_HALF_EVEN))
+    tempScale *= 2
+  }
+  return x
+}
+
+val xxxxx = 1/sqrt(1-pow(0.9999999999999999999999951))
+*/
+
+Set(1,2,3,4,5) map (i => i + 1)
+
+List(1,2,3,4,5,6).toSet[Int] map (i => i+1)
+
+
+
+"-5".toInt
+
+
+7l / 5
+
+import java.math.MathContext
+import java.util.Calendar
+
 import org.joda.time._
+
+
+
+val cal = Calendar.getInstance()
+val Year = cal.get(Calendar.YEAR )
+
+Calendar.getInstance()get(Calendar.YEAR)
 
 
 (38.toDouble / 4543000000l) * 100

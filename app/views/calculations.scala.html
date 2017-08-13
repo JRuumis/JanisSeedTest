@@ -1,0 +1,56 @@
+@import models.AgeCalculator
+
+@()
+
+@base("My Age Calculator - About") {
+
+<div class="inputs-body">
+
+<p>
+Many calculations are based on the millisecond, knowing full well you do not know your age to the millisecond.
+The reason for that is to give the page more dynamism.
+</p>
+
+<p>
+The following constants are used in my calculations:
+
+<ul class="results-list">
+  <li>Planck times in a millisecond: @AgeCalculator.planckTimesInMillisecond</li>
+</ul>
+
+
+<ul class="results-list">
+<li>Age of the Earth in years: @AgeCalculator.earhAgeInYears</li>
+<li>Age of the Universe in years: @AgeCalculator.universeAgeInYears</li>
+<li>Voyager 1 speed in km/h (in calculations assumed to be constant thoughout the journey): @AgeCalculator.voyagerOneSpeedKmh</li>
+<li>Distance in km to Proxima Centauri: @AgeCalculator.distanceToProximaCentauriKm</li>
+<li>Neptune, distance from Earth in km: @AgeCalculator.neptuneFromEarth</li>
+</ul>
+
+<p>
+Speed in terms of Speed of Light (c) and the associated Lorentz Terms (&gamma;):
+</p>
+
+<ul  class="results-list">
+  <li>Voyager 1: @AgeCalculator.speeds("voyager")c, &gamma;=@AgeCalculator.lorentzTerm("voyager")</li>
+  <li>90% the speed of light: @AgeCalculator.speeds("90c")c, &gamma;=@AgeCalculator.lorentzTerm("90c")</li>
+  <li>99% the speed of light: @AgeCalculator.speeds("99c")c, &gamma;=@AgeCalculator.lorentzTerm("99c")</li>
+  <li>Large Hadron Collider (LHC) speed: @AgeCalculator.speeds("LHC")c, &gamma;=@AgeCalculator.lorentzTerm("LHC")</li>
+  <li>Large Electron-Positron Collider (LEP) speed: @AgeCalculator.speeds("LEP")c, &gamma;=@AgeCalculator.lorentzTerm("LEP")</li>
+  <li>The Oh-My-God Particle speed: 0.9999999999999999999999951c, &gamma;=@AgeCalculator.lorentzTerm("OMG")</li>
+</ul>
+
+<p>
+  Body:
+</p>
+
+  <ul class="results-list">
+  <li>Olympic swimming pool size in litres: @AgeCalculator.olympicSwimmingPoolSizeLitres</li>
+    <li>Breaths per second: @AgeCalculator.breathsPerSecond</li>
+    <li>Heartbeats per millisecond: @AgeCalculator.heartbeatsPerMillisecond</li>
+    <li>Kilocalories (kcal) per second: @AgeCalculator.kilocaloriesPerSecond</li>
+  </ul>
+
+</div>
+
+}

@@ -14,21 +14,17 @@ class AgeResultDisplayController @Inject()(cc: ControllerComponents) extends Abs
 
   def calculationResult() = Action { implicit request: Request[AnyContent] =>
 
-    BirthDateObjects.birthDateForm.bindFromRequest.fold(
+    AgeCalculator.birthDateForm.bindFromRequest.fold(
 
       // error
       formWithErrors => { BadRequest(views.html.birthDateInput(formWithErrors)) },
 
       // validation passed
       birthDate => {
-        val result = BirthDateObjects.calculateResults(birthDate)
+        val result = AgeCalculator.calculateResults(birthDate)
         Ok(views.html.ageResultDisplay(result))
       }
-
     )
 
-
-
   }
-
 }

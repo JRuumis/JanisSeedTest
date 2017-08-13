@@ -1,0 +1,163 @@
+
+/*
+dd.error {
+    color: #ff0000;
+}
+*/
+
+body {
+    max-width: 1280px;
+    font-family: arial;
+    margin: 10px auto;
+    background-image: url(/assets/images/ep_naturalwhite.png);
+}
+
+.input-area {
+    background-color: #8ce88c;
+    padding: 10px 10px;
+    margin: 2px 0px;
+    display: inline-block;
+    border-radius: 5px;
+}
+
+.input-area.error {
+    background-color: rgb(255, 204, 204);
+}
+
+#inputs {
+    font-size: 20px;
+    padding: 5px 5px;
+    background-color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 5px;
+    font-family: 'Slabo 27px', serif;
+}
+
+.inputs {
+    padding: 8px 4px;
+}
+
+select option.blank {
+    color: #CCC;
+}
+
+label {
+    font-size:16pt;
+}
+
+#page-header {
+    /* font-family: 'Open Sans Condensed', sans-serif; */
+    font-family: 'Slabo 27px', serif;
+    font-size: 22px;
+    background-position: center right;
+    background-repeat: no-repeat;
+    background-image: -webkit-linear-gradient(top,rgba(0,0,0,0),rgba(0,0,0,0.25)), url('/assets/images/calendar.jpg');
+}
+
+#page-header, #page-footer {
+    background-color: rgba(252, 252, 252, 1);
+    padding: 10px 10px;
+    margin: 5px 0px;
+}
+
+/*#birthYear {
+    width: 100px;
+}*/
+
+h1 {
+    margin: 20px 0;
+}
+
+#page-footer {
+    text-align:center;
+    font-size: 10px;
+}
+
+ul.results-list {
+    font-size: 20px;
+    margin: 3px 0;
+}
+
+ul.errors-list {
+    margin: 0 0;
+}
+
+.inputter {
+    font-size:40pt;
+    font-family: 'Slabo 27px', serif;
+}
+
+.contact-form-input {
+    font-size:15pt;
+    font-family: 'Slabo 27px', serif;
+}
+
+
+
+a.header-link {
+    text-decoration: none;
+    color: #000;
+    background: none;
+}
+
+a:not(.header-link) {
+    text-decoration: none;
+    color: #0645ad;
+    background: none;
+}
+
+
+a:not(.header-link):visited {
+    color: #0645ad;
+}
+
+a:not(.header-link):hover {
+   text-decoration: underline; // changed from text:decoration:none
+}
+
+
+#ping {
+    margin: 5px 5px;
+    padding: 5px 5px;
+    background-color: #000080;
+    color: #fff;
+    font-family: Courier,monospace;
+    font-size: px;
+    width:750px;
+}
+
+.text-paragraph {
+    margin-top: 10px;
+    margin-bottom: 25px;
+}
+
+.text-additional-comment {
+    font-size: 16px;
+    font-style: italic;
+}
+
+.calc-figure {
+    font-weight: bold;
+}
+
+.TODO {
+    color: orange;
+}
+
+.button {
+    transition: background-color .2s ease-in-out,color .2s ease-in-out,box-shadow .2s ease-in-out;
+    background-color: #4682B4;
+    /* background-image: url(bg01.png); */
+    border-radius: 5px;
+    border: 0;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    padding: 0 1.5em;
+    line-height: 2.75em;
+    min-width: 9em;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 600;
+    letter-spacing: -.025em;
+    font-size: 20px;
+}

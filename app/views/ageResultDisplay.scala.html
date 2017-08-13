@@ -1,64 +1,155 @@
-@(result: models.AgeCalculationResults)
+@(result: models.AgeCalculationResult)
 
-@base("Your Age Calculator - ResultsXX") {
+@base("Your Age Calculator - Results") {
 
-  <div class="inputs">
-    <h2>Your age in numbers</h2>
+  <div class="inputs-body">
+    @if( result.daysOldNum < -5) {
+    <h2>Welcome to our age, child of the future! ... or are you just trying to break the Matrix?</h2>
+    } else {}
 
-    Your age in different time units:
-    <ul>
-      <li>@result.yearsOld years old</li>
-      <li>@result.monthsOld months old</li>
-      <li>@result.daysOld days old</li>
-      <li>@result.hoursOld hours old</li>
-      <li>@result.minutesOld minutes old</li>
-      <li>@result.secondsOld approximately seconds old</li>
-      <li>@result.millisecondsOld approximately milliseconds old</li>
-      <li>@result.planckTimesOld approximately <a href="https://en.wikipedia.org/wiki/Planck_time">Planck times</a> old
-      </li>
+    <div class="text-paragraph">
+      You were born on the <span class="calc-figure">@result.birthDateTime</span>.
+      <!-- <span class="text-additional-comment">(0 seconds and 0 milliseconds assumed for calculation purposes.)</span> -->
+    </div>
+
+    <div class="text-paragraph">
+      <span style="font-size:50px">You are <span class="calc-figure">@result.yearsOld</span> years old.</span>
+    </div>
+
+    <div class="text-paragraph">
+      <span>In smaller time units,
+      you are (look out for milestones!):</span>
+      <ul class="results-list">
+        <li><span class="calc-figure">@result.monthsOld</span> months old,</li>
+        <li><span class="calc-figure">@result.weeksOld</span> weeks old,</li>
+        <li><span class="calc-figure">@result.daysOld</span> days old,</li>
+        <li><span class="calc-figure">@result.hoursOld</span> hours old,</li>
+        <li><span class="calc-figure">@result.minutesOld</span> minutes old,</li>
+        <li><span class="calc-figure">@result.secondsOld</span> seconds old,</li>
+        <li><span class="calc-figure">@result.millisecondsOld</span> milliseconds old,</li>
+        <li><span class="calc-figure">@result.planckTimesOld</span> <a href="https://en.wikipedia.org/wiki/Planck_time">Planck times</a> old.
+        </li>
+      </ul>
+      <span class="text-additional-comment">
+        Standard computers measure time down to the millisecond. However, I am guessing, nobody recorded your time of birth down to the millisecond.
+        (Down to the minute is traditional in most countries.) And most certainly not down to the Planck time.
+        However, I added those measurements merely as a curiosity and to make the page more dynamic. You can refresh the page to see them change!
+      </span>
+    </div>
+
+  @if(result.olympicSwimmingPoolCaloriesNum > 0) {
+    <div class="text-paragraph">
+      <span>In your lifetime, what has your body gone through?</span>
+      <ul class="results-list">
+        <li>Your heart has beaten approximately <span class="calc-figure">@result.heartbeats</span> times.</li>
+        <li>You have drawn about <span class="calc-figure">@result.breaths</span> breaths.</li>
+        <li>The ballpark figure for your total calorie intake is <span class="calc-figure">@result.kilocalories</span> kcal. </li>
+        <span class="text-additional-comment">A calorie is a measurement of energy. So we can calculate by how many degrees celsius
+          your total lifetime calorie intake can raise the temperature<br>in an <a href="https://en.wikipedia.org/wiki/Olympic-size_swimming_pool">Olympic-size swimming pool</a>:
+          <span class="calc-figure">@result.olympicSwimmingPoolCalories</span> degrees celsius.
+          @(if(result.olympicSwimmingPoolCaloriesNum < 10.0) {"Not that much, is it?"} else {})</span>
+        <li>So far in your lifetime, you have produced about <span class="calc-figure">@result.salivaProducedLitres</span> litres of <a href="https://en.wikipedia.org/wiki/Saliva">saliva</a>.<br>
+          (That is @result.salivaProducedUSGallons US gallons or @result.salivaProducedImperialTeaspoon teaspoons.)</li>
+        <span class="text-additional-comment">Incidentally, that is enough to fill an
+          <a href="https://en.wikipedia.org/wiki/Olympic-size_swimming_pool">Olympic-size swimming pool</a> to <span class="calc-figure">@result.salivaOlympicPoolPercent%</span>.</span>
+        <li>You have grown <span class="calc-figure">@result.nailsGrownMetres</span> metres' (@result.nailsGrownFeet feet) worth of nails...</li>
+        <li>... and <span class="calc-figure">@result.hairGrownMetres</span> metres' (@result.hairGrownFeet feet) worth of hair.</li>
+      </ul>
+      <span class="text-additional-comment">
+        Of course, the above numbers cannot be exact - your mileage may vary.<br>
+        Some bodily functions are more consistent than others. For example, saliva production is more consistent than nail and hair growth, which varies greatly depending on age, even gender and is different for fingers and for toes.
+      </span>
+    </div>
+
+    <div class="text-paragraph">
+      How does your age compare to cosmic scales?
+      <ul class="results-list">
+        <li>You have been around for approximately <span class="calc-figure">@result.percentageOfEarthAge</span>%
+          of the total <a href="https://en.wikipedia.org/wiki/Age_of_the_Earth">age of the Earth</a>.
+        </li>
+        <li>In other words, the Earth has lived through <span class="calc-figure">@result.earthYourLifetimes</span> of your lifetimes.</li>
+        <li>You have been around for approximately <span class="calc-figure">@result.percentageOfUniverseAge</span>% of the total <a
+                href="https://en.wikipedia.org/wiki/Age_of_the_universe">age of the Universe</a>.
+        </li>
+        <li>In other words, the Universe (of the time itself, if you will) has lived through <span class="calc-figure">@result.universeYourLifetimes</span> of your lifetimes.</li>
+        <li>Our species, the Homo Sapiens, has lived through <span class="calc-figure">@result.homoSapiensYourLifetimes</span> of your lifetimes.</li>
+      </ul>
+    </div>
+
+    <div class="text-paragraph">
+      Talking about cosmos, let us phantasise a bit. What if <a href="https://en.wikipedia.org/wiki/Origin_of_Superman">right after your your birth, your parents had put you in a spacecraft</a>
+      to leave the Earth and the Solar System? First, let us look at what is possible with current technology. The fastest spacecraft leaving the Solar System is the Voyager 1 probe.<br>
+      <span class="text-additional-comment">For the below calculations we will assume constant speed of 62,140 km/h (38,612 mph), which is not really an accurate comparison with the Voyager craft, which has gone through several <a href="https://en.wikipedia.org/wiki/Gravity_assist">gravitational slingshots</a> and is now slowly decelerating.</span>
+    <ul class="results-list">
+      <li>Your Voyager-like space journey in km: <span class="calc-figure">@result.voyagerKm</span>.</li>
+      <li>Your journey in Light Years: <span class="calc-figure">@result.voyagerLightYear</span>.</li>
+      <li>Your journey in light minutes: <span class="calc-figure">@result.voyagerLightMinute</span>.</li>
+      <li>Your journey as % to the nearaest star <a href="https://en.wikipedia.org/wiki/Proxima_Centauri">Proxima Centauri</a>: <span class="calc-figure">@result.voyagerToNearestStar</span>%.</li>
+      <li>Your journey through Solar System: <span class="calc-figure">@result.voyagerSolarSystem</span>.</li>
+      <li>Your journey: By now, your best possible <a href="https://en.wikipedia.org/wiki/Ping_(networking_utility)">ping time</a> would be <span class="calc-figure">@(result.voyagerPing)</span>ms (assuming instant response once the signal reaches the Earth).</li>
     </ul>
+      <span class="text-additional-comment">
+        Your ping time deteriorates at quite a quick rate at this speed. Let's say you board a spacecraft and it instantly accelerates to the speed of
+        the Voyager probe (in reality, instant accelerations don't happen, of course), your ping time would deteriorate quite rapidly.
+        If you started a Counter-Strike match at start and with a perfect ping of 0ms, 40 minutes later, when the match ends, your ping time would have gone up to 276ms...
 
-    <ul>
-      <li>You have been around for approximately @result.percentageOfEarthAge% of the total <a
-              href="https://en.wikipedia.org/wiki/Age_of_the_Earth">age of the Earth</a>.
-      </li>
-      <li>You have been around for approximately @result.percentageOfUniverseAge% of the total <a
-              href="https://en.wikipedia.org/wiki/Age_of_the_universe">age of the Universe</a>.
-      </li>
-    </ul>
+      </span>
+    </div>
 
+    <div class="text-paragraph">
+      <p>
+      Traveling at Voyager speeds, which is pretty much the limit of current technology, will not get you very far in the interstellar space. Technology capability set aside, how fast could you go? Unfortunately, there is a natural speed limit - you cannot reach,
+      nor exceed the <a href="https://en.wikipedia.org/wiki/Speed_of_light">speed of light</a>. However, with a fictional spacecraft you could approach it.
+      Thus you could reach the stars much, much quicker. However, that would come at a cost - time.
+      </p>
+      <p>When traveling at near the speed of light,
+      relativistic effects come into play. Time on Earth would pass much, much quicker than on your spacecraft. So if, like in the above scenario,
+      your parents would have put you in a spacecraft, but this time one going at near speed of light, this would be the time difference between you and everybody you left behind on Earth.
+      </p>
 
-    If you had become a passenger on the Voyager 1 probe upon your birth (possible with current technology):
-    <ul>
-      <li>Voyager journey in km: @result.voyagerKm</li>
-      <li>Voyager journey in Light Years: @result.voyagerLightYear</li>
-      <li>Voyager journey in light minutes: @result.voyagerLightMinute</li>
-      <li>Voyager journey as % to the nearaest star Proxima Centauri: @result.voyagerToNearestStar%</li>
-      <li>Voyager journey through Solar System: @result.voyagerSolarSystem</li>
-    </ul>
-
-
-    If you were to travel near speed of light:
-    <ul>
-
+    <ul class="results-list">
       <!-- http://www.alternatewars.com/BBOW/Space/Time_Dilation.htm -->
-      <li>Going at 90% the speed of light, time on Earth: <!-- 2.294157338706 slower --> @result.speed90cEarthYears years
-        passed on Earth
-      </li>
-      <li>Going at 99% the speed of light, time on Earth: <!-- 7.088812050083 slower --> @result.speed99cEarthYears years
-        passed on Earth
-      </li>
-
       <!-- http://journal.batard.info/post/2008/09/12/lhc-how-fast-do-these-protons-go -->
-      <li>Accelerated by the Large Hadron Collider (99.9999991% the speed of light), time on Earth:
-        <!-- 7460.523 slower --> @result.speedLHCEarthYears years passeed on Earth
-      </li>
+      <li>Going at 90% the speed of light, <span class="calc-figure">@result.earthYears90c</span> years would have passed on Earth and you would have travelled <span class="calc-figure">@result.lyTravel90c</span> light years.</li>
+      <li>Going at 99% the speed of light, <span class="calc-figure">@result.earthYears99c</span> years would have passed on Earth and you would have travelled <span class="calc-figure">@result.lyTravel99c</span> light years.</li>
     </ul>
 
-    Traveling at these speeds, if your local age is @result.yearsOld, you could travel ... light years.
+    <p>
+      What if the speeds reached in modern particle accelerators could be applied to your spacecraft?
+    </p>
+
+    <ul class="results-list">
+      <li>If you were accelerated by the <a href="https://en.wikipedia.org/wiki/Large_Hadron_Collider">Large Hadron Collider</a> (99.9999991% the speed of light, as for a proton with the energy of 7 TeV),
+        <span class="calc-figure">@result.earthYearsLHC</span> years would have passed on Earth but you would have travelled impressive <span class="calc-figure">@result.lyTravelLHC</span> light years.</li>
+      <li>If you were accelerated by the <a href="https://en.wikipedia.org/wiki/Large_Electron%E2%80%93Positron_Collider">Large Electron-Positron Collider (LEP)</a>,
+        <span class="calc-figure">@result.earthYearsLEP</span> years would have passed on Earth but you would have travelled even more impressive <span class="calc-figure">@result.lyTravelLEP</span> light years.</li>
+    </ul>
+
+      <p>
+        But these are not the highest speeds seen for particles with mass. Record holders are <a href="https://en.wikipedia.org/wiki/Ultra-high-energy_cosmic_ray">Ultra-high energy cosmic rays</a>,
+        the most famous of which is probably the <a href="https://en.wikipedia.org/wiki/Oh-My-God_particle">Oh-my-God particle</a>:
+      </p>
+
+      <ul class="results-list">
+        <li>So, if whichever force accelerated the OMG particle, would have oblidged to accelerate you, <span class="calc-figure">@result.earthYearsOMG</span> years would have passed on Earth
+        (assuming the Earth still exists - unlikely) and you would have travelled
+          insane <span class="calc-figure">@result.lyTravelOMG</span> light years (assuming there is enough space in the Universe for you to go that far).</li>
+      </ul>
+    </div>
 
 
-    <BR>TODO: explain calculations
+    @*
+    Distance covered on a spacecraft (traveller's perspective):
+    <ul class="results-list">
+      <li>.90c @result.lyTravel90c</li>
+      <li>.99c @result.lyTravel99c</li>
+      <li>LHC @result.lyTravelLHC</li>
+      <li>LEP @result.lyTravelLEP</li>
+      <li>OMG </li>
+    </ul>
+    *@
+
+  }
 
   </div>
 }
